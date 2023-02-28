@@ -5,6 +5,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.todopeliculas.RecyclerView.MovieAdapter
 import com.example.todopeliculas.data.MovieDataResponse
 import com.example.todopeliculas.data.network.ApiService
 import com.example.todopeliculas.databinding.ActivityMainBinding
@@ -20,7 +22,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var retrofit: Retrofit
-    val HASH = "1cec1783524a54fc2bb1cbefb48cde99"
+
+    private lateinit var adapter: MovieAdapter
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -41,6 +46,11 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
         })
+
+        adapter= MovieAdapter()
+        binding.reciclerViewPrincipal.setHasFixedSize(true)
+        binding.reciclerViewPrincipal.layoutManager=LinearLayoutManager(this)
+        binding.reciclerViewPrincipal.adapter=adapter
     }
 
     private fun searchByName(query: String) {
@@ -52,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                 val response: MovieDataResponse? = myResponse.body()
                 if (response != null) {
                     runOnUiThread {
+                        adapter.updateList(response.data.Movies)
                         binding.ProgresBar.isVisible = false
                     }
 
