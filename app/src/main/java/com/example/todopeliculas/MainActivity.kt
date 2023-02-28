@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import com.example.todopeliculas.data.MovieDataResponse
 import com.example.todopeliculas.data.network.ApiService
 import com.example.todopeliculas.databinding.ActivityMainBinding
@@ -19,18 +20,18 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var retrofit: Retrofit
-    val HASH= "1cec1783524a54fc2bb1cbefb48cde99"
+    val HASH = "1cec1783524a54fc2bb1cbefb48cde99"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        retrofit=getRetrofit()
+        retrofit = getRetrofit()
         initUI()
     }
 
     private fun initUI() {
-        binding.searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 searchByName(query.orEmpty())
                 return false
@@ -43,24 +44,32 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun searchByName(query: String) {
+        binding.ProgresBar.isVisible = true
         CoroutineScope(Dispatchers.IO).launch {
-            val myResponse=retrofit.create(ApiService::class.java).getMovie(query)
-            if (myResponse.isSuccessful){
-                Log.i("Gabri","Funciona !!!!")
-                val response: MovieDataResponse? =myResponse.body()
-                if(response!=null){
-                    Log.i("Gabri",response.toString())
+            val myResponse = retrofit.create(ApiService::class.java).getMovie(query)
+            if (myResponse.isSuccessful) {
+                Log.i("Gabri", "Funciona !!!!")
+                val response: MovieDataResponse? = myResponse.body()
+                if (response != null) {
+                    runOnUiThread {
+                        binding.ProgresBar.isVisible = false
+                    }
+
+                    Log.i("Gabri", response.toString())
                 }
 
-            }else{
-                Log.i("Gabri","NOOOOOOO ;((")
+            } else {
+                Log.i("Gabri", "NOOOOOOO ;((")
+                runOnUiThread {
+                    binding.ProgresBar.isVisible = false
+                }
             }
         }
 
     }
 
 
-    private fun getRetrofit():Retrofit{
+    private fun getRetrofit(): Retrofit {
         return Retrofit
             .Builder()
             .baseUrl("https://gateway.marvel.com/v1/public/")
