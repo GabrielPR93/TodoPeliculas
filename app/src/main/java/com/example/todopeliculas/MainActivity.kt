@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import com.example.todopeliculas.data.MovieDataResponse
 import com.example.todopeliculas.data.network.ApiService
 import com.example.todopeliculas.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
@@ -45,9 +46,14 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val myResponse=retrofit.create(ApiService::class.java).getMovie(query)
             if (myResponse.isSuccessful){
-                Log.i("Prueba","Funciona !!!!")
+                Log.i("Gabri","Funciona !!!!")
+                val response: MovieDataResponse? =myResponse.body()
+                if(response!=null){
+                    Log.i("Gabri",response.toString())
+                }
+
             }else{
-                Log.i("Prueba","NOOOOOOO ;((")
+                Log.i("Gabri","NOOOOOOO ;((")
             }
         }
 
