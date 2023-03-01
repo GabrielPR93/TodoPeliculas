@@ -12,4 +12,5 @@ Aplicación Android desarrollada en Kotlin de Películas de Marvel y toda su inf
 
 - https://developer.marvel.com/
 
-
+[![Kotlin](https://img.shields.io/badge/Kotlin-0095D5?style=for-the-badge&logo=kotlin&logoColor=white&labelColor=101010)]()
+[![Android_Studio](https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android_studio&logoColor=white&labelColor=101010)]()
