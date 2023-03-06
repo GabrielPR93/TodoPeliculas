@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todopeliculas.R
 import com.example.todopeliculas.data.MovieDataResponse
+import com.example.todopeliculas.data.MovieItemResponse
 
-class MovieAdapter(var movieList: List<MovieDataResponse.MovieItemResponse> = emptyList()):RecyclerView.Adapter<MovieViewHolder>() {
+class MovieAdapter(var movieList: List<MovieItemResponse> = emptyList()):RecyclerView.Adapter<MovieViewHolder>() {
 
-    fun updateList(movieList: List<MovieDataResponse.MovieItemResponse>){
+    fun updateList(movieList: List<MovieItemResponse>){
         this.movieList=movieList
         notifyDataSetChanged()
     }

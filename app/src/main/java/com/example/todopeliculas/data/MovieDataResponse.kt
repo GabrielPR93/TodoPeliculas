@@ -3,32 +3,20 @@ package com.example.todopeliculas.data
 import com.google.gson.annotations.SerializedName
 
 data class MovieDataResponse(
-    @SerializedName("code") val codeStatus: Int,
-    @SerializedName("data") val data: MovieData
-
+    @SerializedName("page") val page: Int,
+    @SerializedName("total_results") val Total_results: Int,
+    @SerializedName("results") val Movies: List<MovieItemResponse>
 ) {
-
-    data class MovieData(
-        @SerializedName("count") val Count: Int,
-        @SerializedName("total") val total: Int,
-        @SerializedName("results") val Movies: List<MovieItemResponse>
-    ) {
 
     }
 
     data class MovieItemResponse(
         @SerializedName("id") val MovieId: Int,
         @SerializedName("title") val MovieName: String,
-        @SerializedName("startYear") val StartYear: Int,
-        @SerializedName("thumbnail") val Thumbnail: MovieImageResponse
+        @SerializedName("release_date") val release: String,
+        @SerializedName("poster_path") val URLImage: String,
+
     ) {
 
     }
 
-    data class MovieImageResponse(
-        @SerializedName("path") val UrlImage: String,
-        @SerializedName("extension") val extension: String
-    ) {}
-
-
-}

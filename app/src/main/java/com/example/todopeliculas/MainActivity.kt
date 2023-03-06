@@ -60,9 +60,10 @@ class MainActivity : AppCompatActivity() {
             if (myResponse.isSuccessful) {
                 Log.i("Gabri", "Funciona !!!!")
                 val response: MovieDataResponse? = myResponse.body()
+
                 if (response != null) {
                     runOnUiThread {
-                        adapter.updateList(response.data.Movies)
+                        adapter.updateList(response.Movies)
                         binding.ProgresBar.isVisible = false
                     }
 
@@ -83,7 +84,7 @@ class MainActivity : AppCompatActivity() {
     private fun getRetrofit(): Retrofit {
         return Retrofit
             .Builder()
-            .baseUrl("https://gateway.marvel.com/v1/public/")
+            .baseUrl("https://api.themoviedb.org/3/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

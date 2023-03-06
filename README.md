@@ -1,6 +1,6 @@
 # TodoPeliculas
 
-Aplicación Android desarrollada en Kotlin de Películas de Marvel y toda su información (Actores,Comics,Series...).
+Aplicación Android desarrollada en Kotlin de Películas, Series y toda su información (Actores,Popularidad...).
 
 >Librerías
   
@@ -10,7 +10,7 @@ Aplicación Android desarrollada en Kotlin de Películas de Marvel y toda su inf
   
 >API
 
-- https://developer.marvel.com/
+- https://www.themoviedb.org
 
 
 
