@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.todopeliculas.R
 import com.example.todopeliculas.data.MovieItemResponse
 
-class MovieAdapter(var movieList: List<MovieItemResponse> = emptyList()):RecyclerView.Adapter<MovieViewHolder>() {
+class MovieAdapter(var movieList: List<MovieItemResponse> = emptyList(),
+                   private val onItemSelected: (Int) -> Unit):RecyclerView.Adapter<MovieViewHolder>() {
 
     fun updateList(movieList: List<MovieItemResponse>){
         this.movieList=movieList
@@ -21,7 +22,7 @@ class MovieAdapter(var movieList: List<MovieItemResponse> = emptyList()):Recycle
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
 
-        holder.bind(movieList[position])
+        holder.bind(movieList[position],onItemSelected)
     }
 
     override fun getItemCount() = movieList.size

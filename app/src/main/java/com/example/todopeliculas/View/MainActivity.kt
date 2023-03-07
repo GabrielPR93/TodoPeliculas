@@ -1,14 +1,14 @@
-package com.example.todopeliculas
+package com.example.todopeliculas.View
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todopeliculas.RecyclerView.MovieAdapter
+import com.example.todopeliculas.View.DetailMovieActivity.Companion.EXTRA_ID
 import com.example.todopeliculas.data.MovieDataResponse
 import com.example.todopeliculas.data.network.ApiService
 import com.example.todopeliculas.databinding.ActivityMainBinding
@@ -17,7 +17,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.math.log
 
 
 class MainActivity : AppCompatActivity() {
@@ -49,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        adapter= MovieAdapter()
+        adapter= MovieAdapter{ movieId -> navigateToDetail(movieId)}
         binding.reciclerViewPrincipal.setHasFixedSize(true)
         binding.reciclerViewPrincipal.layoutManager=GridLayoutManager(this,2)
         binding.reciclerViewPrincipal.adapter=adapter
@@ -93,6 +92,12 @@ class MainActivity : AppCompatActivity() {
             .baseUrl("https://api.themoviedb.org/3/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+    }
+
+    private fun navigateToDetail(id:Int){
+        val intent= Intent(this,DetailMovieActivity::class.java)
+        intent.putExtra(EXTRA_ID,id)
+        startActivity(intent)
     }
 
 }
