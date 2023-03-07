@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todopeliculas.R
-import com.example.todopeliculas.data.MovieDataResponse
 import com.example.todopeliculas.data.MovieItemResponse
 
 class MovieAdapter(var movieList: List<MovieItemResponse> = emptyList()):RecyclerView.Adapter<MovieViewHolder>() {

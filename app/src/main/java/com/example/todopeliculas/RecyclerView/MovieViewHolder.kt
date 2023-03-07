@@ -3,8 +3,8 @@ package com.example.todopeliculas.RecyclerView
 
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.example.todopeliculas.data.MovieDataResponse
 import com.example.todopeliculas.data.MovieItemResponse
 import com.example.todopeliculas.databinding.ItemMovieBinding
 import com.squareup.picasso.Picasso
@@ -16,7 +16,7 @@ class MovieViewHolder(view: View):RecyclerView.ViewHolder(view) {
     fun bind(movieItemResponse: MovieItemResponse) {
 
         binding.tvMovieName.text=movieItemResponse.MovieName
-        binding.tvStartYear.text=movieItemResponse.release
+        //binding.tvStartYear.text=movieItemResponse.release
 
         Picasso.get().load("https://image.tmdb.org/t/p/w500"+movieItemResponse.URLImage).into(binding.ImageViewMovie) //Cargar Imagen (URLImage: solo me devuelve el ultimo fragmento de la url en esta API )
 

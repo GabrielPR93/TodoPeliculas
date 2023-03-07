@@ -2,9 +2,11 @@ package com.example.todopeliculas
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todopeliculas.RecyclerView.MovieAdapter
 import com.example.todopeliculas.data.MovieDataResponse
@@ -49,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter= MovieAdapter()
         binding.reciclerViewPrincipal.setHasFixedSize(true)
-        binding.reciclerViewPrincipal.layoutManager=LinearLayoutManager(this)
+        binding.reciclerViewPrincipal.layoutManager=GridLayoutManager(this,2)
         binding.reciclerViewPrincipal.adapter=adapter
     }
 
@@ -71,15 +73,19 @@ class MainActivity : AppCompatActivity() {
                 }
 
             } else {
-                Log.i("Gabri", "NOOOOOOO ;((")
-                runOnUiThread {
-                    binding.ProgresBar.isVisible = false
-                }
+                showMessageError()
             }
         }
 
     }
 
+    private fun showMessageError(){
+        Log.i("Gabri", "NO FUNCIONA ;((")
+        runOnUiThread {
+            binding.ProgresBar.isVisible = false
+
+        }
+    }
 
     private fun getRetrofit(): Retrofit {
         return Retrofit
