@@ -5,40 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginStart="5dp"
-    android:layout_marginLeft="20dp"
+    android:layout_marginEnd="5dp"
     android:layout_marginBottom="10dp"
     android:background="#1B0E0E0E"
     android:gravity="center_vertical"
     android:padding="10dp">
 
 
-    <ImageView
-        android:id="@+id/ImageViewMovie"
-        android:layout_width="match_parent"
-        android:layout_height="280dp"
-        android:elevation="30dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.009" />
+        <ImageView
+            android:id="@+id/ImageViewMovie"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:elevation="30dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.009" />
 
-    <TextView
-        android:id="@+id/tvMovieName"
-        android:fontFamily="@font/sans"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ImageViewMovie"
-        app:layout_constraintVertical_bias="1.0"
-        tools:text="Nombre Pelicula" />
+        <TextView
+            android:id="@+id/tvMovieName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/hurmegeometricsans1bold"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.526"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ImageViewMovie"
+            app:layout_constraintVertical_bias="1.0"
+            tools:text="Nombre Pelicula" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
