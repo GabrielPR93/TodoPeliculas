@@ -61,8 +61,11 @@ class DetailMovieActivity : AppCompatActivity() {
 
     private fun createUI(movie: MovieDetailResponse) {
         Picasso.get().load("https://image.tmdb.org/t/p/w500" + movie.rutaPoster).into(binding.ImageViewDetailMovie)
-        //Log.i("Gabri2", "https://image.tmdb.org/t/p/w500" + movie.rutaPoster)
         binding.textViewNameDetail.text=movie.titulo
+        binding.textViewEslogan.text=movie.eslogan
+        binding.textViewDescripcion.text=movie.descripcion
+        binding.textViewAO.text=movie.fecha
+        binding.textViewGeneros.text=movie.generos.joinToString(separator = " · ", transform = {it.nombreGenero})
     }
 
 }
