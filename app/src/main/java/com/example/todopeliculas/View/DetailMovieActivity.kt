@@ -21,7 +21,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 class DetailMovieActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailMovieBinding
-
     companion object {
         const val EXTRA_ID = "extra_id"
     }

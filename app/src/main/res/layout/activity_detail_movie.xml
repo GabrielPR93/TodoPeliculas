@@ -26,6 +26,7 @@
         android:scaleType="centerCrop"/>
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="195dp"
@@ -34,15 +35,13 @@
         app:cardCornerRadius="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:id="@+id/linearLayoutDescripcion"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <TextView
@@ -61,8 +60,8 @@
                 android:id="@+id/textViewGeneros"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/hurmegeometricsans1semiboldoblique"
                 android:gravity="center_horizontal"
@@ -72,21 +71,21 @@
             <View
                 android:layout_width="180dp"
                 android:layout_height="1dp"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="120dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 android:background="#720E0F10"
-                android:gravity="center_horizontal"/>
+                android:gravity="center_horizontal" />
 
             <TextView
                 android:id="@+id/textViewAño"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="Año:"
-                android:textSize="15dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/hurmegeometricsans1semibold"
                 android:gravity="center_horizontal"
-                android:layout_marginBottom="5dp"/>
+                android:textSize="15dp"
+                tools:text="Año:" />
 
             <TextView
                 android:id="@+id/textViewEslogan"
@@ -94,52 +93,43 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
-                tools:text="Eslogan:"
-                android:textSize="15dp"
+                android:layout_marginBottom="5dp"
                 android:fontFamily="@font/hurmegeometricsans1semiboldoblique"
                 android:gravity="center_horizontal"
-                android:layout_marginBottom="5dp"/>
+                android:textSize="15dp"
+                tools:text="Eslogan:" />
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/textViewDescripcion"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="18dp"
-                    android:layout_marginBottom="10dp"
                     android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/hurmegeometricsans1semibold"
                     android:gravity="left"
                     android:textSize="16dp" />
             </ScrollView>
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="125dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="500dp"
-            android:layout_marginEnd="5dp"
-            android:elevation="30dp"
-            app:cardBackgroundColor="@color/purple_200"
-            app:cardCornerRadius="20dp">
-
-            <TextView
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="2dp"
-                android:fontFamily="@font/hurmegeometricsans1semibold"
-                android:gravity="left"
-                android:text="Personajes"
-                android:textSize="16dp" />
-
-        </androidx.cardview.widget.CardView>
-
     </androidx.cardview.widget.CardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reciclerViewActores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/purple_200"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ImageViewDetailMovie"
+        tools:listitem="@layout/item_actor"
+        android:layout_marginTop="600dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
