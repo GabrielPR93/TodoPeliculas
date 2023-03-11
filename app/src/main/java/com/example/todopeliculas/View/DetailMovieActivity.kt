@@ -3,14 +3,15 @@ package com.example.todopeliculas.View
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.LinearLayout
 import androidx.core.view.isVisible
-import com.example.todopeliculas.R
-import com.example.todopeliculas.RecyclerView.MovieAdapter
-import com.example.todopeliculas.data.MovieDataResponse
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.todopeliculas.RecyclerView.ActorAdapter
+import com.example.todopeliculas.data.ActorItemResponse
 import com.example.todopeliculas.data.MovieDetailResponse
 import com.example.todopeliculas.data.network.ApiService
 import com.example.todopeliculas.databinding.ActivityDetailMovieBinding
-import com.example.todopeliculas.databinding.ActivityMainBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,6 +22,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 class DetailMovieActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailMovieBinding
+    private lateinit var retrofit: Retrofit
+
+    private lateinit var adapter: ActorAdapter
     companion object {
         const val EXTRA_ID = "extra_id"
     }
@@ -29,8 +33,13 @@ class DetailMovieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        retrofit=getRetrofit()
+        InitReciclerView()
+
         val id: Int = intent.getIntExtra(EXTRA_ID, 0)
         getMovieInformation(id)
+        getActorsMovie(id)
+
 
     }
 
@@ -46,11 +55,28 @@ class DetailMovieActivity : AppCompatActivity() {
         binding.ProgresBarDetail.isVisible = true
         CoroutineScope(Dispatchers.IO).launch {
 
-            val movieDetail = getRetrofit().create(ApiService::class.java).getDetailMovie(id)
+            val movieDetail = retrofit.create(ApiService::class.java).getDetailMovie(id)
             Log.i("Gabri2", movieDetail.toString())
             if (movieDetail.body() != null) {
                 runOnUiThread {
                     createUI(movieDetail.body()!!)
+                    binding.ProgresBarDetail.isVisible=false
+                }
+
+            }
+        }
+    }
+
+    private fun getActorsMovie(id: Int) {
+        binding.ProgresBarDetail.isVisible = true
+        CoroutineScope(Dispatchers.IO).launch {
+
+            val actorMovie = retrofit.create(ApiService::class.java).getCreditsMovie(id)
+            val response = actorMovie.body()
+            Log.i("Gabri2", response.toString())
+            if (response != null) {
+                runOnUiThread {
+                    adapter.updateList(response.actores)
                     binding.ProgresBarDetail.isVisible=false
                 }
 
@@ -65,6 +91,15 @@ class DetailMovieActivity : AppCompatActivity() {
         binding.textViewDescripcion.text=movie.descripcion
         binding.textViewAO.text=movie.fecha
         binding.textViewGeneros.text=movie.generos.joinToString(separator = " · ", transform = {it.nombreGenero})
+
+
+    }
+
+    private fun InitReciclerView(){
+        adapter= ActorAdapter()
+        binding.reciclerViewActores.setHasFixedSize(true)
+        binding.reciclerViewActores.layoutManager= LinearLayoutManager(this)
+        binding.reciclerViewActores.adapter=adapter
     }
 
 }
