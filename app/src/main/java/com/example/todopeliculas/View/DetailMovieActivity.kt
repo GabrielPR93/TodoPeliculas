@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.core.view.iterator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.todopeliculas.RecyclerView.ActorAdapter
 import com.example.todopeliculas.data.ActorItemResponse
 import com.example.todopeliculas.data.MovieDetailResponse
@@ -26,7 +27,6 @@ class DetailMovieActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailMovieBinding
     private lateinit var retrofit: Retrofit
-
     private lateinit var adapter: ActorAdapter
     companion object {
         const val EXTRA_ID = "extra_id"
@@ -37,12 +37,11 @@ class DetailMovieActivity : AppCompatActivity() {
         binding = ActivityDetailMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
         retrofit= getRetrofit()
+        InitReciclerView()
 
         val id: Int = intent.getIntExtra(EXTRA_ID, 0)
-        InitReciclerView()
         getMovieInformation(id)
         getActorsMovie(id)
-
 
     }
 
@@ -73,12 +72,10 @@ class DetailMovieActivity : AppCompatActivity() {
                 runOnUiThread {
                     adapter.updateList(response.actores)
                     binding.ProgresBarDetail.isVisible=false
-                }
 
+                }
             }
         }
-
-
     }
 
     private fun createUI(movie: MovieDetailResponse) {
@@ -94,8 +91,8 @@ class DetailMovieActivity : AppCompatActivity() {
     private fun InitReciclerView(){
         adapter= ActorAdapter()
         binding.reciclerViewActores.setHasFixedSize(true)
-        binding.reciclerViewActores.layoutManager= LinearLayoutManager(this)
+        binding.reciclerViewActores.layoutManager= LinearLayoutManager(this,
+            RecyclerView.HORIZONTAL,false)
         binding.reciclerViewActores.adapter=adapter
     }
-
 }

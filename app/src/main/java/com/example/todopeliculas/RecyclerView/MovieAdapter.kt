@@ -1,5 +1,6 @@
 package com.example.todopeliculas.RecyclerView
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,7 @@ class MovieAdapter(var movieList: List<MovieItemResponse> = emptyList(),
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
 
         holder.bind(movieList[position],onItemSelected)
+
     }
 
     override fun getItemCount() = movieList.size

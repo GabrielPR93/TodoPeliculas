@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var retrofit: Retrofit
-
     private lateinit var adapter: MovieAdapter
 
 

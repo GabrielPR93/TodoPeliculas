@@ -1,5 +1,6 @@
 package com.example.todopeliculas.RecyclerView
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,7 @@ class ActorAdapter(var actorList: List<ActorItemResponse> = emptyList()): Recycl
 
     fun updateList(actorList: List<ActorItemResponse>){
         this.actorList=actorList
+        notifyDataSetChanged()
 
     }
 
@@ -21,6 +23,7 @@ class ActorAdapter(var actorList: List<ActorItemResponse> = emptyList()): Recycl
 
     override fun onBindViewHolder(holder: ActorViewHolder, position: Int) {
        holder.bind(actorList[position])
+
     }
 
     override fun getItemCount() = actorList.size
