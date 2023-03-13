@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="2dp"
-    android:layout_marginEnd="2dp"
+    android:layout_marginStart="2.5dp"
+    android:layout_marginEnd="3dp"
     android:layout_marginBottom="10dp"
     android:background="#1B0E0E0E"
     app:cardCornerRadius="20dp"
@@ -19,7 +19,7 @@
 
     <ImageView
         android:id="@+id/ImageViewActor"
-        android:layout_width="100dp"
+        android:layout_width="95dp"
         android:layout_height="100dp"
         android:elevation="30dp"
         android:scaleType="centerCrop"
