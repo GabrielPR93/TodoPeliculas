@@ -11,6 +11,7 @@ import com.example.todopeliculas.RecyclerView.MovieAdapter
 import com.example.todopeliculas.View.DetailMovieActivity.Companion.EXTRA_ID
 import com.example.todopeliculas.data.MovieDataResponse
 import com.example.todopeliculas.data.network.ApiService
+import com.example.todopeliculas.data.network.Retrofit.Companion.getRetrofit
 import com.example.todopeliculas.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -86,13 +87,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getRetrofit(): Retrofit {
-        return Retrofit
-            .Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
+
 
     private fun navigateToDetail(id:Int){
         val intent= Intent(this,DetailMovieActivity::class.java)

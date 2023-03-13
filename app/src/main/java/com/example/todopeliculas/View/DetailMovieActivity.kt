@@ -4,13 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.LinearLayout
+import androidx.core.view.get
 import androidx.core.view.isVisible
+import androidx.core.view.iterator
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todopeliculas.RecyclerView.ActorAdapter
 import com.example.todopeliculas.data.ActorItemResponse
 import com.example.todopeliculas.data.MovieDetailResponse
 import com.example.todopeliculas.data.network.ApiService
+import com.example.todopeliculas.data.network.Retrofit.Companion.getRetrofit
 import com.example.todopeliculas.databinding.ActivityDetailMovieBinding
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
@@ -33,22 +36,14 @@ class DetailMovieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailMovieBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        retrofit=getRetrofit()
-        InitReciclerView()
+        retrofit= getRetrofit()
 
         val id: Int = intent.getIntExtra(EXTRA_ID, 0)
+        InitReciclerView()
         getMovieInformation(id)
         getActorsMovie(id)
 
 
-    }
-
-    private fun getRetrofit(): Retrofit { //cambiar mas adelante a forma mas optima
-        return Retrofit
-            .Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
     }
 
     private fun getMovieInformation(id: Int) {
@@ -82,6 +77,8 @@ class DetailMovieActivity : AppCompatActivity() {
 
             }
         }
+
+
     }
 
     private fun createUI(movie: MovieDetailResponse) {
@@ -91,7 +88,6 @@ class DetailMovieActivity : AppCompatActivity() {
         binding.textViewDescripcion.text=movie.descripcion
         binding.textViewAO.text=movie.fecha
         binding.textViewGeneros.text=movie.generos.joinToString(separator = " · ", transform = {it.nombreGenero})
-
 
     }
 

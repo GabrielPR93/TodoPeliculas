@@ -17,4 +17,5 @@ class MovieViewHolder(view: View):RecyclerView.ViewHolder(view) {
         Picasso.get().load("https://image.tmdb.org/t/p/w500"+movieItemResponse.URLImage).into(binding.ImageViewMovie) //Cargar Imagen (URLImage: solo me devuelve el ultimo fragmento de la url en esta API )
         binding.root.setOnClickListener { onItemSelected(movieItemResponse.MovieId)}
     }
+
 }
