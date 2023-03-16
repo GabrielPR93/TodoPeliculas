@@ -30,15 +30,16 @@
 
         <TextView
             android:id="@+id/tvActorName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="95dp"
+            android:layout_height="100dp"
             android:fontFamily="@font/hurmegeometricsans1bold"
+            android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15dp"
-            android:elevation="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/ImageViewActor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+
             tools:text="Nombre Actor" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

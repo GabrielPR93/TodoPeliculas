@@ -13,9 +13,9 @@ class ActorViewHolder(view: View):RecyclerView.ViewHolder(view) {
 
     fun bind(actorItemResponse: ActorItemResponse){
 
-        //binding.tvActorName.text=actorItemResponse.name
+            Picasso.get().load("https://image.tmdb.org/t/p/w500"+actorItemResponse.rutaImagen).into(binding.ImageViewActor)
+            //binding.tvActorName.text=actorItemResponse.name
 
-        Picasso.get().load("https://image.tmdb.org/t/p/w500"+actorItemResponse.rutaImagen).into(binding.ImageViewActor)
 
 
 
