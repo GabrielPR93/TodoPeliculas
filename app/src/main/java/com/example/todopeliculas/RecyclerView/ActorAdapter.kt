@@ -9,7 +9,7 @@ import com.example.todopeliculas.data.ActorItemResponse
 
 //https://api.themoviedb.org/3/movie/299536/credits?api_key=dd25ec6365ddb50099ea71752bb96cce&language=es-Es --> actores
 
-class ActorAdapter(var actorList: List<ActorItemResponse> = emptyList()): RecyclerView.Adapter<ActorViewHolder>(){
+class ActorAdapter(var actorList: List<ActorItemResponse> = emptyList(),private val onItemSelected: (Int) -> Unit): RecyclerView.Adapter<ActorViewHolder>(){
 
     fun updateList(actorList: List<ActorItemResponse>){
         this.actorList=actorList
@@ -22,7 +22,7 @@ class ActorAdapter(var actorList: List<ActorItemResponse> = emptyList()): Recycl
     }
 
     override fun onBindViewHolder(holder: ActorViewHolder, position: Int) {
-       holder.bind(actorList[position])
+       holder.bind(actorList[position], onItemSelected)
 
     }
 

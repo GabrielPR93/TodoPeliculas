@@ -1,17 +1,14 @@
 package com.example.todopeliculas.View
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.LinearLayout
-import androidx.core.view.get
 import androidx.core.view.isVisible
-import androidx.core.view.iterator
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todopeliculas.RecyclerView.ActorAdapter
-import com.example.todopeliculas.data.ActorItemResponse
+import com.example.todopeliculas.View.DetailActorActivity.Companion.ID_ACTOR
 import com.example.todopeliculas.data.MovieDetailResponse
 import com.example.todopeliculas.data.network.ApiService
 import com.example.todopeliculas.data.network.Retrofit.Companion.getRetrofit
@@ -21,7 +18,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class DetailMovieActivity : AppCompatActivity() {
 
@@ -89,10 +85,16 @@ class DetailMovieActivity : AppCompatActivity() {
     }
 
     private fun InitReciclerView(){
-        adapter= ActorAdapter()
+        adapter= ActorAdapter{idActor -> navigateToDetailActor(idActor)}
         binding.reciclerViewActores.setHasFixedSize(true)
         binding.reciclerViewActores.layoutManager= LinearLayoutManager(this,
             RecyclerView.HORIZONTAL,false)
         binding.reciclerViewActores.adapter=adapter
+    }
+
+    private fun navigateToDetailActor(id:Int){
+        val intent= Intent(this,DetailActorActivity::class.java)
+        intent.putExtra(ID_ACTOR,id)
+        startActivity(intent)
     }
 }

@@ -8,6 +8,8 @@ data class ActorDataResponse(
 )
 
 data class ActorItemResponse(
+
+    @SerializedName("id") val idActor: Int,
     @SerializedName("original_name") val name: String,
     @SerializedName("profile_path") val rutaImagen: String
 )
