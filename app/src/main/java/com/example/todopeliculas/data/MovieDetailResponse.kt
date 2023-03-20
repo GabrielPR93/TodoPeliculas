@@ -6,7 +6,6 @@ data class MovieDetailResponse(
 
     @SerializedName("title") val titulo: String,
     @SerializedName("tagline") val eslogan: String,
-    //@SerializedName("adult") val adult: Boolean,
     @SerializedName("backdrop_path") val rutaPoster: String,
     @SerializedName("overview") val descripcion: String,
     //@SerializedName("popularity") val popularidad: Int,
