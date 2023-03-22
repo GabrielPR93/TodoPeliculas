@@ -8,6 +8,7 @@ data class MovieDetailResponse(
     @SerializedName("tagline") val eslogan: String,
     @SerializedName("backdrop_path") val rutaPoster: String,
     @SerializedName("overview") val descripcion: String,
+    @SerializedName("vote_average") val mediaVotos: String,
     //@SerializedName("popularity") val popularidad: Int,
     @SerializedName("release_date") val fecha: String,
     @SerializedName("genres") val generos: List<MovieGenres>

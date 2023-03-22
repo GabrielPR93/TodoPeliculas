@@ -36,18 +36,10 @@ class SearchActivity : AppCompatActivity() {
 
         retrofit = getRetrofit()
         initUI()
-        binding.bottomNavigation2.setOnItemSelectedListener { onOptionsItemSelected(it) }
+
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.home-> { startActivity(Intent(this,MainActivity::class.java)) }
 
-            R.id.search -> {startActivity(Intent(this,SearchActivity::class.java))}
-        }
-
-        return super.onOptionsItemSelected(item)
-    }
 
     private fun initUI() {
 
@@ -84,6 +76,8 @@ class SearchActivity : AppCompatActivity() {
                     }
 
                     Log.i("Gabri", response.toString())
+                }else{
+
                 }
 
             } else {

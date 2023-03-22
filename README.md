@@ -1,6 +1,6 @@
 # TodoPeliculas
 
-Aplicación Android desarrollada en Kotlin de Películas, Series y toda su información (Actores,Popularidad...).
+Aplicación Android desarrollada en Kotlin de Películas y toda su información (Actores,Popularidad...).
 
 >Librerías
   

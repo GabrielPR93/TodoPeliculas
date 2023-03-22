@@ -24,4 +24,8 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>
+    <style name="RatingBar.Yellow" parent="Theme.AppCompat">
+        <item name="colorControlNormal">#FFC107</item>
+        <item name="colorControlActivated">#FFC107</item>
+    </style>
 </resources>

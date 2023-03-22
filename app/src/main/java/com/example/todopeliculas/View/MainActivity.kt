@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //setSupportActionBar(binding.bottomNavigation)
-        binding.bottomNavigation.setOnItemSelectedListener { onOptionsItemSelected(it) }
+        setSupportActionBar(binding.bottomNavigation)
+        //binding.bottomNavigation.setOnItemSelectedListener { onOptionsItemSelected(it) }
 
     }
 
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId){
-            R.id.home-> {startActivity(Intent(this,MainActivity::class.java)) }
+            //R.id.home-> {startActivity(Intent(this,MainActivity::class.java)) }
 
             R.id.search -> {startActivity(Intent(this,SearchActivity::class.java))}
         }
