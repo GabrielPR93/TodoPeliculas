@@ -7,6 +7,7 @@ import com.example.todopeliculas.data.ActorDetailDataResponse
 import com.example.todopeliculas.data.network.ApiService
 import com.example.todopeliculas.data.network.Retrofit.Companion.getRetrofit
 import com.example.todopeliculas.databinding.ActivityDetailActorBinding
+import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
@@ -45,6 +46,13 @@ class DetailActorActivity : AppCompatActivity() {
     }
 
     private fun createUI(actor: ActorDetailDataResponse) {
+
+        Picasso.get().load("https://image.tmdb.org/t/p/w500"+actor.path).into(binding.ImageViewActor)
+        binding.textViewName.text=actor.name
+        binding.idDepartment.text=actor.department
+        binding.idFechaNacimiento.text=actor.birthday+" - "+actor.deathday
+        binding.idLugarNacimiento.text=actor.place_birth
+        binding.idBiografia.text=actor.biography
 
     }
 
