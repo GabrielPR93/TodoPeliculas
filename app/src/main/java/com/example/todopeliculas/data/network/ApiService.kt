@@ -1,6 +1,7 @@
 package com.example.todopeliculas.data.network
 
 import com.example.todopeliculas.data.ActorDataResponse
+import com.example.todopeliculas.data.ActorDetailDataResponse
 import com.example.todopeliculas.data.MovieDataResponse
 import com.example.todopeliculas.data.MovieDetailResponse
 import retrofit2.Response
@@ -20,5 +21,8 @@ interface ApiService {
 
     @GET("movie/{id}/credits?"+ APIKEY+"&language=es-Es")
     suspend fun getCreditsMovie(@Path("id") idMovie: Int):Response<ActorDataResponse>
+
+    @GET("person/{id}?"+ APIKEY+"&language=es-Es")
+    suspend fun getDetailActor(@Path("id") idMovie: Int):Response<ActorDetailDataResponse>
 
 }
