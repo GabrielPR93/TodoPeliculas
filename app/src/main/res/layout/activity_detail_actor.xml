@@ -40,15 +40,18 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/circles" />
 
-                <ImageView
+                <com.mikhaellopez.circularimageview.CircularImageView
                     android:id="@+id/ImageViewActor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_radius="10dp"
+                    app:civ_shadow_color="#D8DAE4"
+                    android:scaleType="fitCenter"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/profile" />
+                    android:src="@drawable/profile" />
 
                 <TextView
                     android:id="@+id/textViewName"
@@ -57,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="Nombre Apellidos"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     app:layout_constraintEnd_toEndOf="@+id/ImageViewActor"
                     app:layout_constraintStart_toStartOf="@+id/ImageViewActor"
                     app:layout_constraintTop_toBottomOf="@+id/ImageViewActor" />
@@ -65,7 +68,7 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardViewActor"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:elevation="30dp"
                     app:cardCornerRadius="30dp"
                     android:layout_marginStart="20dp"
@@ -74,7 +77,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/imageView" >
+                    app:layout_constraintTop_toBottomOf="@id/imageView"
+                    tools:backgroundTint="#36BB86FC">
 
                     <View
                         android:id="@+id/viewCardView"
@@ -88,93 +92,128 @@
                         android:elevation="10dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
 
-                    <TextView
-                        android:layout_marginTop="20dp"
-                        android:layout_marginStart="20dp"
-                        android:fontFamily="@font/hurmegeometricsans1semibold"
-                        android:elevation="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Departamento:"/>
-
-                    <TextView
-                        android:id="@+id/idDepartment"
-                        android:fontFamily="@font/hurmegeometricsans1semibold"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginStart="125dp"
-                        android:layout_marginEnd="10dp"
-                        android:elevation="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="Actriz:"/>
-
-                    <TextView
-                        android:layout_marginTop="50dp"
-                        android:layout_marginStart="20dp"
-                        android:fontFamily="@font/hurmegeometricsans1semibold"
-                        android:elevation="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Fecha de Nacimiento:"/>
-
-                    <TextView
-                        android:id="@+id/idFechaNacimiento"
-                        android:fontFamily="@font/hurmegeometricsans1semibold"
-                        android:layout_marginTop="50dp"
-                        android:layout_marginStart="180dp"
-                        android:layout_marginEnd="10dp"
-                        android:elevation="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="Fecha de Nacimiento"/>
-
-                    <TextView
-                        android:layout_marginTop="80dp"
-                        android:layout_marginStart="20dp"
-                        android:fontFamily="@font/hurmegeometricsans1semibold"
-                        android:elevation="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Lugar de Nacimiento:"/>
-
-                    <TextView
-                        android:id="@+id/idLugarNacimiento"
-                        android:fontFamily="@font/hurmegeometricsans1semibold"
-                        android:layout_marginTop="80dp"
-                        android:layout_marginStart="180dp"
-                        android:layout_marginEnd="10dp"
-                        android:elevation="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="Lugar de Nacimiento"/>
-
-                    <TextView
-                        android:layout_marginTop="170dp"
-                        android:fontFamily="@font/hurmegeometricsans1bold"
-                        android:textSize="18dp"
-                        android:textAlignment="center"
-                        android:elevation="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Biografía"/>
-
-                    <TextView
-                        android:id="@+id/idBiografia"
-                        android:fontFamily="@font/hurmegeometricsans1semibold"
-                        android:layout_marginTop="200dp"
-                        android:layout_marginBottom="10dp"
-                        android:textSize="16dp"
-                        android:textAlignment="textStart"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginEnd="5dp"
-                        android:elevation="10dp"
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        tools:text="Biografía"/>
+                        android:elevation="10dp">
 
+                        <TextView
+                            android:id="@+id/tituloDepartamento"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:elevation="10dp"
+                            android:fontFamily="@font/hurmegeometricsans1semibold"
+                            android:text="Departamento:"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
+                        <TextView
+                            android:id="@+id/idDepartment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:elevation="10dp"
+                            android:fontFamily="@font/hurmegeometricsans1semibold"
+                            app:layout_constraintStart_toEndOf="@+id/tituloDepartamento"
+                            app:layout_constraintTop_toTopOf="@+id/tituloDepartamento"
+                            tools:text="Actriz:" />
+
+                        <TextView
+                            android:id="@+id/tituloNacimiento"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:elevation="10dp"
+                            android:fontFamily="@font/hurmegeometricsans1semibold"
+                            android:text="Fecha de Nacimiento:"
+                            app:layout_constraintStart_toStartOf="@+id/tituloDepartamento"
+                            app:layout_constraintTop_toTopOf="@id/idDepartment" />
+
+                        <TextView
+                            android:id="@+id/idFechaNacimiento"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:elevation="10dp"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:fontFamily="@font/hurmegeometricsans1semibold"
+                            app:layout_constraintStart_toEndOf="@+id/tituloNacimiento"
+                            app:layout_constraintTop_toTopOf="@+id/tituloNacimiento"
+                            tools:text="Fecha de Nacimiento" />
+
+                        <TextView
+                            android:id="@+id/textViewNacimiento"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="30dp"
+                            android:elevation="10dp"
+                            android:fontFamily="@font/hurmegeometricsans1semibold"
+                            android:text="Lugar de Nacimiento:"
+                           app:layout_constraintStart_toStartOf="@id/tituloNacimiento"
+                            app:layout_constraintTop_toTopOf="@id/idFechaNacimiento" />
+
+                        <TextView
+                            android:id="@+id/idLugarNacimiento"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginEnd="5dp"
+                            android:elevation="10dp"
+                            android:fontFamily="@font/hurmegeometricsans1semibold"
+                            app:layout_constraintStart_toEndOf="@+id/textViewNacimiento"
+                            app:layout_constraintTop_toTopOf="@id/textViewNacimiento"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            tools:text="Lugar de Nacimientoooooooooooo" />
+
+                        <TextView
+                            android:id="@+id/tituloBiografia"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="170dp"
+                            android:elevation="10dp"
+                            android:fontFamily="@font/hurmegeometricsans1bold"
+                            android:text="Biografía"
+                            android:textAlignment="center"
+                            android:textSize="18dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <View
+                            android:layout_width="180dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#720E0F10"
+                            android:elevation="10dp"
+                            android:gravity="center_horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tituloBiografia" />
+
+                        <TextView
+                            android:id="@+id/idBiografia"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="20dp"
+                            android:elevation="10dp"
+                            android:fontFamily="@font/hurmegeometricsans1semibold"
+                            android:textAlignment="textStart"
+                            android:textSize="16dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/tituloBiografia"
+                            tools:text="Biografía" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
