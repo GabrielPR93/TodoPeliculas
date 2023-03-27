@@ -32,7 +32,7 @@ class DetailActorActivity : AppCompatActivity() {
 
         val id: Int = intent.getIntExtra(ID_ACTOR,0)
         getDetailActor(id)
-        Log.i("G","---> "+id)
+        Log.i("G","---> ID: "+id)
     }
 
     private fun getDetailActor(id: Int){
@@ -48,13 +48,16 @@ class DetailActorActivity : AppCompatActivity() {
     }
 
     private fun createUI(actor: ActorDetailDataResponse) {
+        if(!actor.path.isNullOrEmpty()){
 
-        Picasso.get().load("https://image.tmdb.org/t/p/w500"+actor.path).into(binding.ImageViewActor)
-        binding.textViewName.text=actor.name
-        binding.idDepartment.text=actor.department
-        binding.idFechaNacimiento.text=StringBuilder(actor.birthday).append(" - ").append(actor.deathday?:"")
-        binding.idLugarNacimiento.text=actor.place_birth
-        binding.idBiografia.text=actor.biography
+            Picasso.get().load("https://image.tmdb.org/t/p/w500"+actor.path).into(binding.ImageViewActor)
+        }
+
+        binding.textViewName.text=actor.name?:""
+        binding.idDepartment.text=actor.department?:""
+        binding.idFechaNacimiento.text=StringBuilder(actor.birthday?:"").append(" - ").append(actor.deathday?:"")
+        binding.idLugarNacimiento.text=actor.place_birth?:""
+        binding.idBiografia.text=actor.biography?:""
 
 
     }

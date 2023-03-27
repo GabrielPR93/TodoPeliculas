@@ -71,14 +71,16 @@ class DetailMovieActivity : AppCompatActivity() {
     }
 
     private fun createUI(movie: MovieDetailResponse) {
-        Picasso.get().load("https://image.tmdb.org/t/p/w500" + movie.rutaPoster).into(binding.ImageViewDetailMovie)
-        binding.textViewNameDetail.text=movie.titulo
+
+        if(!movie.rutaPoster.isNullOrEmpty()){
+            Picasso.get().load("https://image.tmdb.org/t/p/w500" + movie.rutaPoster).into(binding.ImageViewDetailMovie)
+        }
+        binding.textViewNameDetail.text=movie.titulo?:""
         binding.ratingBar.rating=movie.mediaVotos.toFloat()/2
-        Log.i("G",movie.mediaVotos)
-        binding.textViewEslogan.text=movie.eslogan
-        binding.textViewDescripcion.text=movie.descripcion
-        binding.textViewAO.text=movie.fecha
-        binding.textViewGeneros.text=movie.generos.joinToString(separator = " · ", transform = {it.nombreGenero})
+        binding.textViewEslogan.text=movie.eslogan?:""
+        binding.textViewDescripcion.text=movie.descripcion?:""
+        binding.textViewAO.text=movie.fecha?:""
+        binding.textViewGeneros.text=movie.generos.joinToString(separator = " · ", transform = {it.nombreGenero})?:""
 
     }
 
