@@ -4,19 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.MainActivity">
+    tools:context=".View.MainActivity"
+    android:background="@drawable/main_backgroud">
 
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/bottom_navigation"
+    <TextView
+        android:id="@+id/textBienvenido"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="Bienvenid@ !!"
+        android:textColor="@color/white"
+        android:fontFamily="@font/hurmegeometricsans1semibold"
+        android:textSize="40dp"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
-        app:menu="@menu/menu_bar" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/textVer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Que te gustaría ver ?"
+        android:fontFamily="@font/hurmegeometricsans1semiboldoblique"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/textBienvenido"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchViewPrincipal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/grey_backgroud"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textVer" />
 
 
 

@@ -29,13 +29,18 @@ class SearchActivity : AppCompatActivity() {
     private lateinit var retrofit: Retrofit
     private lateinit var adapter: MovieAdapter
 
+    companion object {
+        const val TITULO_CONSULTA = "titulo"
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = SearchBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        var titulo: String? =intent.getStringExtra(TITULO_CONSULTA)
         retrofit = getRetrofit()
+        searchByName(titulo.orEmpty())
         initUI()
 
 
@@ -53,6 +58,7 @@ class SearchActivity : AppCompatActivity() {
                 return false
             }
         })
+
 
         adapter= MovieAdapter{ movieId -> navigateToDetail(movieId)}
         binding.reciclerViewPrincipal.setHasFixedSize(true)
@@ -84,7 +90,7 @@ class SearchActivity : AppCompatActivity() {
                 showMessageError()
             }
         }
-
+    Log.i("G","---->>>>>>>>"+query)
     }
 
     private fun showMessageError(){
