@@ -2,6 +2,7 @@ package com.example.todopeliculas.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.example.todopeliculas.R
 import com.example.todopeliculas.data.ActorDetailDataResponse
 import com.example.todopeliculas.data.network.ApiService
@@ -31,6 +32,7 @@ class DetailActorActivity : AppCompatActivity() {
 
         val id: Int = intent.getIntExtra(ID_ACTOR,0)
         getDetailActor(id)
+        Log.i("G","---> "+id)
     }
 
     private fun getDetailActor(id: Int){
@@ -50,10 +52,12 @@ class DetailActorActivity : AppCompatActivity() {
         Picasso.get().load("https://image.tmdb.org/t/p/w500"+actor.path).into(binding.ImageViewActor)
         binding.textViewName.text=actor.name
         binding.idDepartment.text=actor.department
-        binding.idFechaNacimiento.text=actor.birthday+" - "+actor.deathday
+        binding.idFechaNacimiento.text=StringBuilder(actor.birthday).append(" - ").append(actor.deathday?:"")
         binding.idLugarNacimiento.text=actor.place_birth
         binding.idBiografia.text=actor.biography
 
+
     }
+
 
 }

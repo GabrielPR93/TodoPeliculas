@@ -50,13 +50,13 @@
                     android:scaleType="fitCenter"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:src="@drawable/profile" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/textViewName"
                     android:fontFamily="@font/hurmegeometricsans1bold"
-                    android:textSize="19dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="Nombre Apellidos"
@@ -162,7 +162,7 @@
                             android:layout_width="180dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
-                            android:layout_marginEnd="5dp"
+                            android:layout_marginEnd="12dp"
                             android:elevation="10dp"
                             android:fontFamily="@font/hurmegeometricsans1semibold"
                             app:layout_constraintStart_toEndOf="@+id/textViewNacimiento"

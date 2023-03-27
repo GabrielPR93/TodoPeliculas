@@ -42,15 +42,13 @@ class DetailMovieActivity : AppCompatActivity() {
     }
 
     private fun getMovieInformation(id: Int) {
-        binding.ProgresBarDetail.isVisible = true
         CoroutineScope(Dispatchers.IO).launch {
-
             val movieDetail = retrofit.create(ApiService::class.java).getDetailMovie(id)
-            Log.i("Gabri2", movieDetail.toString())
+
             if (movieDetail.body() != null) {
                 runOnUiThread {
                     createUI(movieDetail.body()!!)
-                    binding.ProgresBarDetail.isVisible=false
+
                 }
 
             }
@@ -58,16 +56,14 @@ class DetailMovieActivity : AppCompatActivity() {
     }
 
     private fun getActorsMovie(id: Int) {
-        binding.ProgresBarDetail.isVisible = true
         CoroutineScope(Dispatchers.IO).launch {
 
             val actorMovie = retrofit.create(ApiService::class.java).getCreditsMovie(id)
             val response = actorMovie.body()
-            Log.i("Gabri2", response.toString())
+
             if (response != null) {
                 runOnUiThread {
                     adapter.updateList(response.actores)
-                    binding.ProgresBarDetail.isVisible=false
 
                 }
             }
