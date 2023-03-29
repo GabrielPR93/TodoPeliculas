@@ -12,4 +12,4 @@ data class ActorDetailDataResponse(
     @SerializedName("place_of_birth") val place_birth: String,
     //@SerializedName("popularity") val popularity: Int,
     @SerializedName("profile_path") val path: String
-){}
+)

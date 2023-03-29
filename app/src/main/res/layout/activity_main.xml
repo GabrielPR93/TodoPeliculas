@@ -48,6 +48,39 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textVer" />
 
+    <TextView
+        android:id="@+id/textViewTendencias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tendencias"
+        android:textColor="@color/white"
+        android:fontFamily="@font/hurmegeometricsans1semibold"
+        app:layout_constraintTop_toBottomOf="@id/searchViewPrincipal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reciclerViewTendencias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textViewTendencias"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:elevation="10dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_movie_trending"/>
+
+
+
+
+
 
 
 

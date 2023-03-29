@@ -3,7 +3,6 @@ package com.example.todopeliculas.View
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -43,7 +42,6 @@ class SearchActivity : AppCompatActivity() {
         searchByName(titulo.orEmpty())
         initUI()
 
-
     }
 
     private fun initUI() {
@@ -59,11 +57,11 @@ class SearchActivity : AppCompatActivity() {
             }
         })
 
-
         adapter= MovieAdapter{ movieId -> navigateToDetail(movieId)}
         binding.reciclerViewPrincipal.setHasFixedSize(true)
         binding.reciclerViewPrincipal.layoutManager=GridLayoutManager(this,2)
         binding.reciclerViewPrincipal.adapter=adapter
+
     }
 
     private fun searchByName(query: String) {
@@ -79,6 +77,7 @@ class SearchActivity : AppCompatActivity() {
                     runOnUiThread {
                         adapter.updateList(response.Movies)
                         binding.ProgresBar.isVisible = false
+
                     }
 
                     Log.i("Gabri", response.toString())
@@ -90,7 +89,6 @@ class SearchActivity : AppCompatActivity() {
                 showMessageError()
             }
         }
-    Log.i("G","---->>>>>>>>"+query)
     }
 
     private fun showMessageError(){
@@ -100,7 +98,6 @@ class SearchActivity : AppCompatActivity() {
 
         }
     }
-
 
 
     private fun navigateToDetail(id:Int){

@@ -1,9 +1,6 @@
 package com.example.todopeliculas.data.network
 
-import com.example.todopeliculas.data.ActorDataResponse
-import com.example.todopeliculas.data.ActorDetailDataResponse
-import com.example.todopeliculas.data.MovieDataResponse
-import com.example.todopeliculas.data.MovieDetailResponse
+import com.example.todopeliculas.data.*
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -24,5 +21,8 @@ interface ApiService {
 
     @GET("person/{id}?"+ APIKEY+"&language=es-Es")
     suspend fun getDetailActor(@Path("id") idMovie: Int):Response<ActorDetailDataResponse>
+
+    @GET("trending/movie/day?"+ APIKEY+"&language=es-Es")
+    suspend fun getTrending():Response<TrendingDataResponse>
 
 }
