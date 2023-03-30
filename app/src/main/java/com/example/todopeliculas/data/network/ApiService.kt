@@ -25,4 +25,7 @@ interface ApiService {
     @GET("trending/movie/day?"+ APIKEY+"&language=es-Es")
     suspend fun getTrending():Response<TrendingDataResponse>
 
+    @GET("movie/now_playing?"+ APIKEY+"&language=es-Es")
+    suspend fun getCines():Response<CinesDataResponse>
+
 }

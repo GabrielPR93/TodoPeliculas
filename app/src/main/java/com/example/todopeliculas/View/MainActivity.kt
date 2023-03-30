@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.todopeliculas.R
+import com.example.todopeliculas.RecyclerView.MovieCinesAdapter
 import com.example.todopeliculas.RecyclerView.MovieTrendingAdapter
 import com.example.todopeliculas.View.SearchActivity.Companion.TITULO_CONSULTA
 import com.example.todopeliculas.data.TrendingDataResponse
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var retrofit: Retrofit
     private lateinit var adapter: MovieTrendingAdapter
+    private lateinit var adapterCines: MovieCinesAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
@@ -36,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         retrofit= getRetrofit()
         initUI()
         getMoviesTrending()
+        getMoviesCines()
     }
 
     private fun initUI() {
@@ -50,11 +53,19 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        initRecyclerViews()
+    }
+
+    private fun initRecyclerViews(){
         adapter=MovieTrendingAdapter{movieId->navigateToDetail(movieId)}
         binding.reciclerViewTendencias.setHasFixedSize(true)
         binding.reciclerViewTendencias.layoutManager=LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
         binding.reciclerViewTendencias.adapter=adapter
 
+        adapterCines=MovieCinesAdapter{movieId->navigateToDetail(movieId)}
+        binding.reciclerViewCines.setHasFixedSize(true)
+        binding.reciclerViewCines.layoutManager=LinearLayoutManager(this,RecyclerView.HORIZONTAL,false)
+        binding.reciclerViewCines.adapter=adapterCines
     }
 
     private fun getMoviesTrending(){
@@ -74,9 +85,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun getMoviesCines(){
+        CoroutineScope(Dispatchers.IO).launch {
+
+            val movieCines = retrofit.create(ApiService::class.java).getCines()
 
 
+            if(movieCines.isSuccessful){
+                val response = movieCines.body()
+                if(response!=null){
+                    runOnUiThread{
+                        adapterCines.updateList(response.moviesCines)
+                    }
+                }
+            }else{
+                Log.i("G","------------>> ")
+            }
 
+        }
+    }
     private fun navigateToSearch(titulo:String){
         val intent= Intent(this,SearchActivity::class.java)
         intent.putExtra(TITULO_CONSULTA,titulo)
