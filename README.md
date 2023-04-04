@@ -2,6 +2,8 @@
 
 Aplicación Android desarrollada en Kotlin de Películas y toda su información (Actores,Popularidad...).
 
+![](./Images/banner.PNG)
+
 >Librerías
   
   - Picasso: Para transformar las urls en imágenes.
